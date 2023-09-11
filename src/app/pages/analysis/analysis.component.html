@@ -1,0 +1,56 @@
+<div class="analysis-container">
+<div class="analysis-actions-cont">
+<mat-form-field class="actions-cont" class="chip-list">
+  <mat-label>IDs</mat-label>
+  <mat-chip-grid #chipGridID>
+    <mat-chip-row *ngFor="let id of idsArray; let i = index" (removed)="removeID(i)">
+      {{id}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+  </mat-chip-grid>
+  <input placeholder="Input an ID"
+         [matChipInputFor]="chipGridID"
+         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+         (matChipInputTokenEnd)="addID($event)" />
+</mat-form-field>
+
+<mat-form-field class="chip-list">
+  <mat-label>Subjects</mat-label>
+  <mat-chip-grid #chipGridSubject>
+    <mat-chip-row *ngFor="let subject of subjectsArray; let i = index" (removed)="removeSubject(i)">
+      {{subject}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+  </mat-chip-grid>
+  <input placeholder="Input a subject"
+         [matChipInputFor]="chipGridSubject"
+         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+         [matAutocomplete]="auto"
+         (matChipInputTokenEnd)="addSubject($event)" />
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let subject of filteredSubjects | async" [value]="subject">
+      {{subject}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+</div>
+<div cdkDropList  (cdkDropListDropped)="onItemDropped($event)" class="chart-container">
+  <div *ngFor="let chart of chartsData;let i = index" [attr.id]="chart.key" cdkDrag class="chart1">
+    <chart 
+    [index]="i"
+    [chartKey]="chart.key"
+    [chartType]="getChartType(chart.key)"
+    [lineChartData]="chart.value"
+    [lineChartLabels]="chart.value[0]!.lineChartLabels"
+    [lineChartOptions]="lineChartOptions"
+      >
+    </chart>
+  
+  </div>
+</div>
+<div *ngIf="!chartsData.length">No Data To pressent, Please input IDs or Subjects</div>
+</div>

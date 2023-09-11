@@ -1,0 +1,20 @@
+<div class="chart-layout" *ngIf="index !== 2">
+    <h2>{{ chartName }}</h2>
+  
+    <p>{{ chartExplanation }}</p>
+  
+    
+    <canvas baseChart
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [type]="chartType">
+</canvas>
+</div>
+
+<div *ngIf="index===2" class="placeholder">
+    <h2>{{ chartName }}</h2>
+  
+    <p>{{ chartExplanation }}</p>
+  
+</div>

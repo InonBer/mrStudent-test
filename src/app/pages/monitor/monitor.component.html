@@ -1,0 +1,58 @@
+<div class="monitor-container">
+
+    <div class="actions-cont">
+    <mat-form-field  class="chip-list">
+    <mat-label>IDs</mat-label>
+    <mat-chip-grid #chipGridID>
+      <mat-chip-row *ngFor="let student of studentsToDisplay; let i = index" (removed)="removeId(student.id)">
+        {{student.id}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </mat-chip-grid>
+    <input placeholder="Input an ID"
+           [matChipInputFor]="chipGridID"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           (matChipInputTokenEnd)="addId($event)" />
+  </mat-form-field>
+  
+  <mat-form-field class="chip-list">
+    <mat-label>Names</mat-label>
+    <mat-chip-grid #chipGridName>
+      <mat-chip-row *ngFor="let student of studentsToDisplay; let i = index" (removed)="removeId(student.id)">
+        {{student.name}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </mat-chip-grid>
+    <input placeholder="Input a name"
+           [matChipInputFor]="chipGridName"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matAutocomplete]="auto"
+           (matChipInputTokenEnd)="addName($event)" />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onNameSelected($event)">
+      <mat-option *ngFor="let student of filteredStudents | async" [value]="student">
+        {{student.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+    <!-- Buttons Here -->
+    <div class="state-section" [formGroup]="filterForm">
+        <mat-checkbox class="state-checkbox" color="primary" formControlName="passed">
+          Passed
+        </mat-checkbox>
+        <mat-checkbox class="state-checkbox" color="accent" formControlName="failed">
+          Failed
+        </mat-checkbox>
+      </div>
+        </div>
+    <div class="table-container">
+
+    <monitor-table
+    [filters]="filterForm.value"
+     [inputStudents]="isStudentToDisplay(studentsToDisplay)"></monitor-table>
+    </div>
+</div>
+  

@@ -1,0 +1,30 @@
+
+<div class="data-cmp-container">
+    <div class="actions-container">
+        <mat-form-field class="input-width" appearance="fill">
+            <mat-label>Filter Students</mat-label>
+            <input matInput [(ngModel)]="filter" (ngModelChange)="filterChanged($event)" placeholder="Type to filter...">
+          </mat-form-field>
+
+
+
+            </div>
+
+    <div class="content-container">
+
+        <div class="list-cont">
+            
+            <students-list [studentsData]="studentsData"  (studentSelected)="selectStudent($event)"></students-list>
+        </div>
+        <div class="details-cont">
+            <student-details  
+            [student]="selectedStudent"
+            (removeStudentEmit)="handleRemoveStudent()"
+            (addStudentEmit)="handleAddStudent()"
+            (saveChangesEmit)="handleSaveChanges($event)"
+            ></student-details>
+        </div>
+    </div>
+</div>
+
+  

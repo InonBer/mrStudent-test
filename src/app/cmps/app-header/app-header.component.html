@@ -1,0 +1,19 @@
+<mat-toolbar class="nav-container">
+    <mat-toolbar-row class="flex space-between align-center">
+      <div class="flex">
+        <button mat-button [routerLinkActive]="['active-nav']" routerLink="/data" [routerLinkActiveOptions]="{exact: true}">
+          Data
+        </button>
+        <button mat-button [routerLinkActive]="['active-nav']" routerLink="/analysis" [routerLinkActiveOptions]="{exact: true}">
+          Analysis
+        </button>
+        <button mat-button [routerLinkActive]="['active-nav']" routerLink="/monitor" [routerLinkActiveOptions]="{exact: true}">
+          Monitor
+        </button>
+      </div>
+      <a routerLink="/home">
+        <img src="./assets/img/logo.png" alt="app-logo" title="Go home"/>
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  

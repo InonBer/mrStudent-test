@@ -1,0 +1,109 @@
+<div class="students-details-cont">
+
+  <div class="students-action-container">
+    <button mat-button (click)="onAddStudent()">Add</button>
+    <button mat-button (click)="onRemoveStudent()">Remove</button>
+    <button mat-button (click)="onSaveChanges()">Save Changes</button>
+  </div>
+  
+  <div class="students-details-container">
+    
+    <div *ngIf="student; else noStudent">
+      <h2>Student Details</h2>
+      <!-- ID -->
+      <div (click)="focusedField='id'" *ngIf="focusedField !== 'id'">
+        <p mat-body-1>ID: {{ student.id }}</p>
+      </div>
+      <mat-form-field *ngIf="focusedField === 'id'" appearance="outline">
+        ID:<input matInput [(ngModel)]="student.id" (blur)="focusedField=null"/>
+      </mat-form-field>
+      
+      <!-- Name -->
+      <div (click)="focusedField='name'" *ngIf="focusedField !== 'name'">
+        <p mat-body-1>Name: {{ student.name }}</p>
+      </div>
+      <mat-form-field *ngIf="focusedField === 'name'" appearance="outline">
+        Name:<input matInput [(ngModel)]="student.name" (blur)="focusedField=null"/>
+      </mat-form-field>
+      
+      <!-- Grade -->
+      <div (click)="focusedField='grade'" *ngIf="focusedField !== 'grade'">
+        <p mat-body-1>Grade: {{ student.grade }}</p>
+      </div>
+    <mat-form-field *ngIf="focusedField === 'grade'" appearance="outline">
+      Grade:<input matInput [(ngModel)]="student.grade" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+    <!-- Email -->
+    <div (click)="focusedField='email'" *ngIf="focusedField !== 'email'">
+      <p mat-body-1>Email: {{ student.email }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'email'" appearance="outline">
+      Email:<input matInput [(ngModel)]="student.email" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+    <!-- Date Joined -->
+    <div (click)="focusedField='dateJoined'" *ngIf="focusedField !== 'dateJoined'">
+      <p mat-body-1>Date Joined: {{ student.dateJoined }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'dateJoined'" appearance="outline">
+      Date Joined:<input matInput [(ngModel)]="student.dateJoined" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+    <!-- Address -->
+    <div (click)="focusedField='address'" *ngIf="focusedField !== 'address'">
+      <p mat-body-1>Adress: {{ student.address }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'address'" appearance="outline">
+      Address:<input matInput [(ngModel)]="student.address" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+    <!-- City -->
+    <div (click)="focusedField='city'" *ngIf="focusedField !== 'city'">
+      <p mat-body-1>City: {{ student.city }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'city'" appearance="outline">
+      City:<input matInput [(ngModel)]="student.city" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+    <!-- Country -->
+    <div (click)="focusedField='country'" *ngIf="focusedField !== 'country'">
+      <p mat-body-1>Country: {{ student.country }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'country'" appearance="outline">
+      Country:<input matInput [(ngModel)]="student.country" (blur)="focusedField=null"/>
+    </mat-form-field>
+
+    <!-- Zip -->
+    <div (click)="focusedField='zip'" *ngIf="focusedField !== 'zip'">
+      <p mat-body-1>Zip: {{ student.zip }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'zip'" appearance="outline">
+      Zip:<input matInput [(ngModel)]="student.zip" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+    <!-- Subject -->
+    <div (click)="focusedField='subject'" *ngIf="focusedField !== 'subject'">
+      <p mat-body-1>Subject: {{ student.subject }}</p>
+    </div>
+    <mat-form-field *ngIf="focusedField === 'subject'" appearance="outline">
+      Subject:<input matInput [(ngModel)]="student.subject" (blur)="focusedField=null"/>
+    </mat-form-field>
+    
+  </div>
+  <ng-template #noStudent>
+    <h2>Student Details</h2>
+    <p>ID: N/A</p>
+    <p>Name: N/A</p>
+    <p>Grade: N/A</p>
+    <p>Email: N/A</p>
+    <p>Date Joined: N/A</p>
+    <p>Address: N/A</p>
+    <p>City: N/A</p>
+    <p>Country: N/A</p>
+    <p>Zip: N/A</p>
+    <p>Subject: N/A</p>
+  </ng-template>
+  
+</div>
+</div>

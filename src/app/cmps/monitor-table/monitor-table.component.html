@@ -1,0 +1,32 @@
+<mat-table [dataSource]="studentsData">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.id }}</mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.name }}</mat-cell>
+    </ng-container>
+  
+    <!-- Average Column -->
+    <ng-container matColumnDef="average">
+      <mat-header-cell *matHeaderCellDef>Average</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ getAverageGrade(student) }}</mat-cell>
+    </ng-container>
+  
+    <!-- Exams Column -->
+    <ng-container matColumnDef="exams">
+      <mat-header-cell *matHeaderCellDef>Exams</mat-header-cell>
+      <mat-cell *matCellDef="let student">{{ student.gradesOverTime.length }}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="getRowClass(row)"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10]"></mat-paginator>
+
+  
