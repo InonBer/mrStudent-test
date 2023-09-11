@@ -3,4 +3,14 @@
     border: 1px solid #00000045;
     border-radius: 5px;
     padding: 10px;
+    position: relative;
+}
+.details-editable-note{
+    position: absolute;
+    top: 0;
+    color: #00000045;
+   user-select: none;
+}
+.details-editable-note:hover{
+    color: #000000a7;
 }
